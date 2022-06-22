@@ -1,0 +1,35 @@
+<div class="users">
+    <div class="users__top">
+        <h2 class="users__top-heading">Users</h2>
+        <a class="users__top-add">
+            <ion-icon name="add-circle"></ion-icon>
+            <a routerLink="create">Add User</a>
+        </a>
+    </div>
+
+    <div class="users__content box">
+        <ng-container *ngIf="!loading; else loadingTempl">
+            <p class="users__total">Have an <b>{{users.length}}</b> user</p>
+
+            <table class="users__list">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let user of users" [user]="user" user-item></tr>
+                </tbody>
+            </table>
+        </ng-container>
+        <ng-template #loadingTempl>
+            Loading ...
+        </ng-template>
+    </div>
+</div>

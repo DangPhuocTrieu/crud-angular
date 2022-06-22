@@ -1,0 +1,74 @@
+<div class="detail">
+    <h5 class="detail__name">Name: <b>{{user?.name}}</b></h5>
+
+    <div class="detail__content box">
+        <ng-container *ngIf="!loading; else loadingTempl">
+            <h6 class="detail__heading">Details Info</h6>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Username</td>
+                        <td>{{user.username}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>{{user.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>Website</td>
+                        <td>{{user.website}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Street</td>
+                        <td>{{user.address.street}}</td>
+                    </tr>
+                    <tr>
+                        <td>Suite</td>
+                        <td>{{user.address.suite}}</td>
+                    </tr>
+                    <tr>
+                        <td>City</td>
+                        <td>{{user.address.city}}</td>
+                    </tr>
+                    <tr>
+                        <td>Zipcode</td>
+                        <td>{{user.address.zipcode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Company</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{user.company.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>CatchPhrase</td>
+                        <td>{{user.company.catchPhrase}}</td>
+                    </tr>
+                    <tr>
+                        <td>Bs</td>
+                        <td>{{user.company.bs}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a class="detail__back" routerLink="/">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+                <span>Back</span>
+            </a>
+        </ng-container>
+
+        <ng-template #loadingTempl>
+            Loading ...
+        </ng-template>
+    </div>
+</div>

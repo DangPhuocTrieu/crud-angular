@@ -1,0 +1,16 @@
+<td>{{user.id}}</td>
+<td>{{user.name}}</td>
+<td>{{user.username}}</td>
+<td>{{user.email}}</td>
+<td>{{user.phone}}</td>
+<td class="user__actions">
+    <a class="user__actions-view" routerLink='/detail/{{user.id}}'>
+        <ion-icon name="eye"></ion-icon>
+    </a>
+    <a class="user__actions-edit">
+        <ion-icon name="create"></ion-icon>
+    </a>
+    <a class="user__actions-remove">
+        <ion-icon name="trash"></ion-icon>
+    </a>
+</td>

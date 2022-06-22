@@ -1,0 +1,45 @@
+@import '../../scss/variables.scss';
+
+.users {
+    padding: 15px 20px 15px 0;
+
+    &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        &-heading {
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        &-add {
+            display: flex;
+            align-items: center;
+            gap: 0 5px;
+            padding: 8px 10px;
+            background-color: $blue-color;
+            color: white;
+            border-radius: 15px;
+
+            a {
+                color: inherit;
+            }
+        }
+    }
+
+    &__total {
+        margin-bottom: 20px;
+    }
+    
+    &__list {
+        width: 100%;
+        th {
+            padding: 15px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+    }
+}
