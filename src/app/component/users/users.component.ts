@@ -14,17 +14,15 @@ export class UsersComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.getUsers()
   }
 
   getUsers() {
-    this.userService.getUsers()
-      .pipe(delay(1000))
-      .subscribe(users => {
-        this.users = users
-        this.loading = false
-      })
+    this.userService.getUsers().pipe(delay(500)).subscribe(users => {
+      this.users = users
+      this.loading = false
+    }) 
   }
 
 }

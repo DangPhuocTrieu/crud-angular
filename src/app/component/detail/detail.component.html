@@ -1,68 +1,46 @@
 <div class="detail">
-    <h5 class="detail__name">Name: <b>{{user?.name}}</b></h5>
+    <h5 class="detail__heading">Details Info</h5>
 
     <div class="detail__content box">
         <ng-container *ngIf="!loading; else loadingTempl">
-            <h6 class="detail__heading">Details Info</h6>
+           <div class="detail__avatar">
+                <img [src]="getUrlAvatar(user.avatar ? user.avatar : avatar_user_default)">
+           </div>
             <table>
                 <tbody>
                     <tr>
-                        <td>Username</td>
-                        <td>{{user.username}}</td>
+                        <td>Full name</td>
+                        <td>{{user.fullName}}</td>
+                    </tr>
+                    <tr>
+                        <td>User name</td>
+                        <td>{{user.userName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Age</td>
+                        <td>{{user.age}}</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>{{user.gender}}</td>
                     </tr>
                     <tr>
                         <td>Email</td>
                         <td>{{user.email}}</td>
                     </tr>
                     <tr>
-                        <td>Phone</td>
-                        <td>{{user.phone}}</td>
-                    </tr>
-                    <tr>
-                        <td>Website</td>
-                        <td>{{user.website}}</td>
+                        <td>Phone number</td>
+                        <td>{{user.phoneNumber}}</td>
                     </tr>
                     <tr>
                         <td>Address</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Street</td>
-                        <td>{{user.address.street}}</td>
-                    </tr>
-                    <tr>
-                        <td>Suite</td>
-                        <td>{{user.address.suite}}</td>
-                    </tr>
-                    <tr>
-                        <td>City</td>
-                        <td>{{user.address.city}}</td>
-                    </tr>
-                    <tr>
-                        <td>Zipcode</td>
-                        <td>{{user.address.zipcode}}</td>
-                    </tr>
-                    <tr>
-                        <td>Company</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>{{user.company.name}}</td>
-                    </tr>
-                    <tr>
-                        <td>CatchPhrase</td>
-                        <td>{{user.company.catchPhrase}}</td>
-                    </tr>
-                    <tr>
-                        <td>Bs</td>
-                        <td>{{user.company.bs}}</td>
+                        <td>{{user.address}}</td>
                     </tr>
                 </tbody>
             </table>
 
             <a class="detail__back" routerLink="/">
-                <ion-icon name="chevron-back-outline"></ion-icon>
+                <ion-icon name="arrow-round-back"></ion-icon>
                 <span>Back</span>
             </a>
         </ng-container>

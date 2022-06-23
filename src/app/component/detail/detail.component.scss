@@ -1,12 +1,14 @@
 .detail {
-    padding: 15px 20px 15px 0;
-
-    &__name {
-        margin-bottom: 20px;
-    }
+    padding: 15px 0;
 
     &__heading {
         text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    &__avatar {
+        width: 100px;
+        height: 100px;
         margin-bottom: 20px;
     }
 

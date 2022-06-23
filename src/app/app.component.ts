@@ -8,17 +8,12 @@ import { UserService } from './services/user.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  users!: User[]
 
-  constructor(private userService: UserService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.getUsers()
   }
 
-  getUsers() {
-    this.userService.getUsers().subscribe(users => this.users = users)
-  }
 
   title = 'crud-demo';
 }

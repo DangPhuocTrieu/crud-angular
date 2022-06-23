@@ -22,14 +22,23 @@ a {
     cursor: pointer;
 }
 
+img {
+    object-fit: cover;
+}
+
 input, button {
     outline: none;
     border: none;
     background: none;
 }
 
+select {
+    outline: none
+}
+
 button {
      cursor: pointer;
+     color: white;
 }
 
 td {
@@ -40,4 +49,5 @@ td {
     background-color: white;
     box-shadow: 0 0 15px 5px rgba(black, 0.05);
     padding: 20px;
+    margin-right: 20px;
 }

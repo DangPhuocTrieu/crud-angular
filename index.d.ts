@@ -1,4 +1,4 @@
-export interface User {
+interface User {
     _id: string;
     fullName: string;
     userName: string;
@@ -8,4 +8,4 @@ export interface User {
     address: string;
     gender: string;
     avatar?: string;
-}
+} 

@@ -10,6 +10,7 @@ import { MenuComponent } from './component/menu/menu.component';
 import { UserComponent } from './component/user/user.component';
 import { UsersComponent } from './component/users/users.component';
 import { CreateUserComponent } from './component/create-user/create-user.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CreateUserComponent } from './component/create-user/create-user.compone
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    IonicModule
+    IonicModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

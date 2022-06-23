@@ -12,6 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 export class DetailComponent implements OnInit {
   user!: User
   loading = true
+  avatar_user_default = 'https://www.hardiagedcare.com.au/wp-content/uploads/2019/02/default-avatar-profile-icon-vector-18942381.jpg'
+
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
@@ -20,7 +22,8 @@ export class DetailComponent implements OnInit {
   }
 
   getDetailUser() {
-    const id = Number(this.route.snapshot.paramMap.get('id'))
+    let id = this.route.snapshot.paramMap.get('id')
+
     this.userService.getUser(id)
       .pipe(delay(1000))
       .subscribe(user => {
@@ -28,5 +31,8 @@ export class DetailComponent implements OnInit {
         this.loading = false
       })
   }
-
+  
+  getUrlAvatar(url: any) {
+    return this.userService.sanitizeImageUrl(url)
+  }
 }
