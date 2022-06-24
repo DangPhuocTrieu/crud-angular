@@ -6,13 +6,13 @@
 <td>{{user.age}}</td>
 <td>{{user.gender}}</td>
 <td class="user__actions">
-    <a class="user__actions-view" routerLink='/detail/{{user._id}}'>
+    <button class="user__actions-view" [routerLink]="['/detail', user._id]">
         <ion-icon name="eye"></ion-icon>
-    </a>
-    <a class="user__actions-edit">
+    </button>
+    <button class="user__actions-edit" [routerLink]="['/edit', user._id]">
         <ion-icon name="create"></ion-icon>
-    </a>
-    <a class="user__actions-remove">
+    </button>
+    <button class="user__actions-remove">
         <ion-icon name="trash"></ion-icon>
-    </a>
+    </button>
 </td>

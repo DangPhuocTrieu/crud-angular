@@ -19,8 +19,8 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.getUsers().pipe(delay(500)).subscribe(users => {
-      this.users = users
+    this.userService.getUsers().pipe(delay(500)).subscribe(data => {
+      this.users = data.users
       this.loading = false
     }) 
   }

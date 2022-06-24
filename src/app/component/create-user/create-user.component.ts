@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastService } from 'angular-toastify';
+import { Observer } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,8 +10,20 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent implements OnInit {
-  previewURL = ''
+
   file!: any
+  previewURL = ''
+
+  private observer: Observer<any> = {
+    next: (data: any): void => {
+      this._toastService.success(data.message)
+      this.form.reset()
+    },
+    error: (data: any): void => {
+      this._toastService.error(data.error.message ? data.error.message : 'I')
+    },
+    complete: (): void => {}
+  };
 
   form: FormGroup = this.fb.group({
     fullName: ['', Validators.required],
@@ -22,7 +36,11 @@ export class CreateUserComponent implements OnInit {
     avatar: [''] 
   })
 
-  constructor(private fb: FormBuilder, private userService: UserService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private userService: UserService, 
+    private _toastService: ToastService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -35,13 +53,24 @@ export class CreateUserComponent implements OnInit {
     this.file = event.target.files[0]
     this.previewURL = URL.createObjectURL(this.file)
   }
+
  
   handleSubmit(form: FormGroup) {
-    console.log(form.value)
+    if(this.file) {
+      const formData = new FormData()
+      formData.append('file', this.file)
+      formData.append('upload_preset', 'instagramimages')
 
-    let formData = new FormData()
-    formData.append('file', this.file)
-    formData.append('upload_preset', 'user-avatar')
+      this.userService.uploadImage(formData).subscribe(file => {
+        this.userService.addUser({
+          ...form.value,
+          avatar: file.secure_url
+        }).subscribe(this.observer)
+      })
+    }
+    
+    else {
+      this.userService.addUser(form.value).subscribe(this.observer)
+    } 
   }
-
 }

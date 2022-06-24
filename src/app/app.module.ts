@@ -11,6 +11,9 @@ import { UserComponent } from './component/user/user.component';
 import { UsersComponent } from './component/users/users.component';
 import { CreateUserComponent } from './component/create-user/create-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
+import { EditUserComponent } from './component/edit-user/edit-user.component';
+import { FormLayoutComponent } from './component/form-layout/form-layout.component'; 
 
 @NgModule({
   declarations: [
@@ -21,15 +24,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserComponent,
     DetailComponent,
     CreateUserComponent,
+    EditUserComponent,
+    FormLayoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     IonicModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularToastifyModule
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

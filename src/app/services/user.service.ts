@@ -12,20 +12,23 @@ export class UserService {
   
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
-  
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.BASE_URL)
-  }
-  
-  getUser(id: any) {
-    return this.http.get<User>(this.BASE_URL + '/'+ id)
-  }
-
   sanitizeImageUrl(imageUrl: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl)
   }
 
-  uploadImage(data: FormData) {
-    return this.http.post<any>('https://api.cloudinary.com/v1_1/ddwurilrw/image/upload', data)
+  getUsers(): Observable<any> {
+    return this.http.get<User[]>(this.BASE_URL)
+  }
+  
+  getUser(id: string): Observable<any> {
+    return this.http.get<User>(this.BASE_URL + '/'+ id)
+  }
+
+  addUser(data: User): Observable<any> {
+    return this.http.post<User>(this.BASE_URL + '/create', data)
+  }
+
+  uploadImage(formData: FormData): Observable<any> {
+    return this.http.post<any>('https://api.cloudinary.com/v1_1/ddwurilrw/image/upload', formData)
   }
 }

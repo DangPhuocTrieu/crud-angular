@@ -22,12 +22,12 @@ export class DetailComponent implements OnInit {
   }
 
   getDetailUser() {
-    let id = this.route.snapshot.paramMap.get('id')
+    let id = String(this.route.snapshot.paramMap.get('id'))
 
     this.userService.getUser(id)
       .pipe(delay(1000))
-      .subscribe(user => {
-        this.user = user
+      .subscribe(data => {
+        this.user = data.user
         this.loading = false
       })
   }

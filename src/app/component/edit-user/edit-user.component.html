@@ -1,5 +1,5 @@
 <div class="create">
-    <h5 class="create__heading">User Info</h5>
+    <h5 class="create__heading">Edit User Info</h5>
     <form class="create__list box" [formGroup]="form" (ngSubmit)="handleSubmit(form)">
         <div class="create__item">
             <div class="create__group">
@@ -78,11 +78,13 @@
         </div>
 
        <div class="create__button">
-            <button type="button" class="create__back" routerLink="/">>Back</button>
-            <button type="submit" class="create__submit" [class.create__disabled]="form.invalid">Create User</button>
+            <button type="button" class="create__back" routerLink="/">Back</button>
+            <button type="submit" class="create__submit" [class.create__disabled]="form.invalid">Update User</button>
        </div>
 
     </form>
     <lib-toastify-toast-container></lib-toastify-toast-container>
 </div>
+
+<pre>{{user | json}}</pre>
  
