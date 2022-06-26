@@ -12,7 +12,7 @@
     <button class="user__actions-edit" [routerLink]="['/edit', user._id]">
         <ion-icon name="create"></ion-icon>
     </button>
-    <button class="user__actions-remove">
+    <button class="user__actions-remove" (click)="handleDeleteUser()">
         <ion-icon name="trash"></ion-icon>
     </button>
 </td>

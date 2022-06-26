@@ -16,6 +16,10 @@ export class UserService {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl)
   }
 
+  uploadImage(formData: FormData): Observable<any> {
+    return this.http.post<any>('https://api.cloudinary.com/v1_1/ddwurilrw/image/upload', formData)
+  }
+
   getUsers(): Observable<any> {
     return this.http.get<User[]>(this.BASE_URL)
   }
@@ -28,7 +32,11 @@ export class UserService {
     return this.http.post<User>(this.BASE_URL + '/create', data)
   }
 
-  uploadImage(formData: FormData): Observable<any> {
-    return this.http.post<any>('https://api.cloudinary.com/v1_1/ddwurilrw/image/upload', formData)
+  editUser(id: string, data: User): Observable<any> {
+    return this.http.put<User>(this.BASE_URL + '/edit/' + id, data)
+  }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete<any>(this.BASE_URL + '/delete/' + id)
   }
 }

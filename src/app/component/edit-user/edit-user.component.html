@@ -73,7 +73,7 @@
                     <span>Chọn từ máy tính</span>
                 </label>
                 <input type="file" id="avatar" formControlName="avatar" (change)="handleChangeFile($event)">
-                <img *ngIf="previewURL" class="create__preview" [src]="getUrlAvatar(previewURL)">
+                <img *ngIf="previewURL" class="create__preview" [src]="transformUrlAvatar(previewURL)">
             </div>
         </div>
 
@@ -86,5 +86,5 @@
     <lib-toastify-toast-container></lib-toastify-toast-container>
 </div>
 
-<pre>{{user | json}}</pre>
+
  

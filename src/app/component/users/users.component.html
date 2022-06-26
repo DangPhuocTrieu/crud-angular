@@ -24,13 +24,21 @@
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let user of users" [user]="user" user-item></tr>
+                    <tr 
+                        user-item
+                        *ngFor="let user of users" 
+                        [user]="user" 
+                        (deleteUser)="handleDeleteUser($event)"
+                        >
+                    </tr>
                 </tbody>
             </table>
         </ng-container>
 
         <ng-template #loadingTempl>
-            Loading ...
+            <div [style.textAlign]="'center'">Loading ...</div>
         </ng-template>
+
+        <lib-toastify-toast-container></lib-toastify-toast-container>
     </div>
 </div>

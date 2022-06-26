@@ -2,7 +2,7 @@
     <h5 class="detail__heading">Details Info</h5>
 
     <div class="detail__content box">
-        <ng-container *ngIf="!loading; else loadingTempl">
+        <div class="detail__wrapp" *ngIf="!loading; else loadingTempl">
            <div class="detail__avatar">
                 <img [src]="getUrlAvatar(user.avatar ? user.avatar : avatar_user_default)">
            </div>
@@ -43,10 +43,10 @@
                 <ion-icon name="arrow-round-back"></ion-icon>
                 <span>Back</span>
             </button>
-        </ng-container>
+        </div>
 
         <ng-template #loadingTempl>
-            Loading ...
+            <div [style.textAlign]="'center'">Loading ...</div>
         </ng-template>
     </div>
 </div>

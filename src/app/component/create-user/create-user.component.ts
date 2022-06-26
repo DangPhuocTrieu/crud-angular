@@ -10,17 +10,17 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./create-user.component.scss']
 })
 export class CreateUserComponent implements OnInit {
-
   file!: any
   previewURL = ''
 
-  private observer: Observer<any> = {
+  observer: Observer<any> = {
     next: (data: any): void => {
-      this._toastService.success(data.message)
       this.form.reset()
+      this.previewURL = ''
+      this.toastService.success(data.message)
     },
     error: (data: any): void => {
-      this._toastService.error(data.error.message ? data.error.message : 'I')
+      this.toastService.error(data.error.message ? data.error.message : 'I')
     },
     complete: (): void => {}
   };
@@ -28,7 +28,7 @@ export class CreateUserComponent implements OnInit {
   form: FormGroup = this.fb.group({
     fullName: ['', Validators.required],
     userName: ['', [Validators.required, Validators.minLength(5)]],
-    age: ['20'],
+    age: [''],
     gender: ['Nam'],
     email: ['', [Validators.required, Validators.email]],
     phoneNumber: ['', [Validators.required, Validators.pattern('^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$')]],
@@ -39,13 +39,13 @@ export class CreateUserComponent implements OnInit {
   constructor(
     private fb: FormBuilder, 
     private userService: UserService, 
-    private _toastService: ToastService
+    private toastService: ToastService
     ) { }
 
   ngOnInit(): void {
   }
 
-  getUrlAvatar(url: any) {
+  transformUrlAvatar(url: any) {
     return this.userService.sanitizeImageUrl(url)
   }
 

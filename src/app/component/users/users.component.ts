@@ -1,5 +1,6 @@
+import { ToastService } from 'angular-toastify';
 import { Component, OnInit } from '@angular/core';
-import { delay, tap } from 'rxjs';
+import { delay } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,8 +12,9 @@ import { UserService } from 'src/app/services/user.service';
 export class UsersComponent implements OnInit {
   users!: User[]
   loading = true
+  msgs!: string
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private toastService: ToastService) { }
 
   ngOnInit(): void {  
     this.getUsers()
@@ -25,4 +27,12 @@ export class UsersComponent implements OnInit {
     }) 
   }
 
+  handleDeleteUser(id: string) {
+    if(confirm('Are you sure you want to delete ?')) {
+      this.userService.deleteUser(id).subscribe(data => {
+        this.toastService.success('Delete user successfully')
+        this.getUsers()
+      })
+    }
+  }
 }

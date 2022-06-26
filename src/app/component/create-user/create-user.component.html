@@ -73,12 +73,12 @@
                     <span>Chọn từ máy tính</span>
                 </label>
                 <input type="file" id="avatar" formControlName="avatar" (change)="handleChangeFile($event)">
-                <img *ngIf="previewURL" class="create__preview" [src]="getUrlAvatar(previewURL)">
+                <img *ngIf="previewURL" class="create__preview" [src]="transformUrlAvatar(previewURL)">
             </div>
         </div>
 
        <div class="create__button">
-            <button type="button" class="create__back" routerLink="/">>Back</button>
+            <button type="button" class="create__back" routerLink="/">Back</button>
             <button type="submit" class="create__submit" [class.create__disabled]="form.invalid">Create User</button>
        </div>
 
