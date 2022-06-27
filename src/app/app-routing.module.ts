@@ -6,12 +6,10 @@ import { UsersComponent } from './component/users/users.component';
 import { EditUserComponent } from './component/edit-user/edit-user.component';
 
 const routes: Routes = [
-  { path: '', children: [
-    { path: 'detail/:id', component: DetailComponent },
-    { path: 'edit/:id', component: EditUserComponent },
-    { path: 'create', component: CreateUserComponent },
-    { path: '', component: UsersComponent }
-  ] }
+  { path: 'detail/:id', component: DetailComponent },
+  { path: 'edit/:id', component: EditUserComponent },
+  { path: 'create', component: CreateUserComponent },
+  { path: '', component: UsersComponent }
 ];
 
 @NgModule({

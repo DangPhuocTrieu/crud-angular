@@ -73,6 +73,11 @@ export class EditUserComponent implements OnInit {
     this.flag = true
   }
 
+  handleRemoveImage() {
+    this.previewURL = ''
+    this.flag = false
+  }
+
   handleSubmit(form: FormGroup) {
     if(this.flag) {
       const formData = new FormData()

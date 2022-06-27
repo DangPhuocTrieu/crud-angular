@@ -15,8 +15,8 @@ export class CreateUserComponent implements OnInit {
 
   observer: Observer<any> = {
     next: (data: any): void => {
-      this.form.reset()
       this.previewURL = ''
+      this.form.reset({ gender: 'Nam', age: 20 })
       this.toastService.success(data.message)
     },
     error: (data: any): void => {
@@ -28,7 +28,7 @@ export class CreateUserComponent implements OnInit {
   form: FormGroup = this.fb.group({
     fullName: ['', Validators.required],
     userName: ['', [Validators.required, Validators.minLength(5)]],
-    age: [''],
+    age: ['20'],
     gender: ['Nam'],
     email: ['', [Validators.required, Validators.email]],
     phoneNumber: ['', [Validators.required, Validators.pattern('^(0|84)(2(0[3-9]|1[0-6|8|9]|2[0-2|5-9]|3[2-9]|4[0-9]|5[1|2|4-9]|6[0-3|9]|7[0-7]|8[0-9]|9[0-4|6|7|9])|3[2-9]|5[5|6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])([0-9]{7})$')]],
@@ -54,6 +54,11 @@ export class CreateUserComponent implements OnInit {
     this.previewURL = URL.createObjectURL(this.file)
   }
 
+  handleRemoveImage() {
+    this.previewURL = ''
+    this.file = null
+  }
+
  
   handleSubmit(form: FormGroup) {
     if(this.file) {
@@ -70,7 +75,10 @@ export class CreateUserComponent implements OnInit {
     }
     
     else {
-      this.userService.addUser(form.value).subscribe(this.observer)
+      this.userService.addUser({
+        ...form.value, 
+        avatar: ''
+      }).subscribe(this.observer)
     } 
   }
 }

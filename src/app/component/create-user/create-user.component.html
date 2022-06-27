@@ -42,7 +42,7 @@
             </div>
             <div class="create__message" *ngIf="form.get('email')?.errors && form.get('email')?.touched">
                 <span *ngIf="form.get('email')?.errors?.['required']">Email is required</span>
-                <span *ngIf="form.get('email')?.errors?.['email']">Email invalidate</span>
+                <span *ngIf="form.get('email')?.errors?.['email']">Email is not valid</span>
             </div>
         </div>
         <div class="create__item">
@@ -52,7 +52,7 @@
             </div>
             <div class="create__message" *ngIf="form.get('phoneNumber')?.errors && form.get('phoneNumber')?.touched">
                 <span *ngIf="form.get('phoneNumber')?.errors?.['required']">Phone number is required</span>
-                <span *ngIf="form.get('phoneNumber')?.errors?.['pattern']">Phone invalidate</span>
+                <span *ngIf="form.get('phoneNumber')?.errors?.['pattern']">Phone is not valid</span>
             </div>
         </div>
         <div class="create__item">
@@ -73,7 +73,10 @@
                     <span>Chọn từ máy tính</span>
                 </label>
                 <input type="file" id="avatar" formControlName="avatar" (change)="handleChangeFile($event)">
-                <img *ngIf="previewURL" class="create__preview" [src]="transformUrlAvatar(previewURL)">
+                <div class="create__preview" *ngIf="previewURL">
+                    <img [src]="transformUrlAvatar(previewURL)">
+                    <ion-icon name="close-circle" (click)="handleRemoveImage()"></ion-icon>
+               </div>
             </div>
         </div>
 
